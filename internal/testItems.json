@@ -10,9 +10,6 @@
     "B":{
             "SKU":"B",
             "unitPrice": 5,
-            "specialPrice": {
-                "price": 0,
-                "amount": 0
-            }
+            "specialPrice": {}
         }
 }

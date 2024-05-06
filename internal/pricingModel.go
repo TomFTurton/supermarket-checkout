@@ -12,7 +12,7 @@ type ItemModel struct {
 	SpecialPrice struct {
 		Amount int `json:"amount"`
 		Price  int `json:"price"`
-	} `json:"specialPrice"`
+	} `json:"specialPrice,omitempty"`
 }
 
 func NewPricingModel(file []byte) (map[string]ItemModel, error) {

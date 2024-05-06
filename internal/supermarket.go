@@ -18,10 +18,20 @@ func (s *Supermarket) Checkout(input []string) (int, error) {
 	}
 
 	// calculate total
-	// for item, count := range items {
-	// 	itemSubTotal := 0
-
-	// 	// s.model.Items :=
-	// }
-	return 0, errors.New("not implemented")
+	shopTotal := 0
+	for item, count := range items {
+		pricing, found := s.model[item]
+		if !found {
+			return 0, errors.New("error: item not found")
+		}
+		itemSubTotal := 0
+		if pricing.SpecialPrice.Amount > 0 {
+			itemSubTotal += (count / pricing.SpecialPrice.Amount) * pricing.SpecialPrice.Price
+			itemSubTotal += (count % pricing.SpecialPrice.Amount) * pricing.UnitPrice
+		} else {
+			itemSubTotal = count * pricing.UnitPrice
+		}
+		shopTotal += itemSubTotal
+	}
+	return shopTotal, nil
 }

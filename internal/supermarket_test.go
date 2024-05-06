@@ -2,6 +2,7 @@ package internal
 
 import (
 	_ "embed"
+	"errors"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -15,18 +16,21 @@ func TestCheckout(t *testing.T) {
 	sm := NewSupermarket(model)
 
 	tt := []struct {
-		name string
-		// test input
-		input []string
-		// expected output
-		total int
-		// expected errors
+		name          string
+		input         []string
+		total         int
 		expectedError error
 	}{
 		{
 			name:  "happy path",
-			input: []string{"A", "A", "A", "B"},
-			total: 135,
+			input: []string{"A", "B", "A", "A", "B", "A"},
+			total: 190,
+		},
+		{
+			name:          "item not found in pricing model",
+			input:         []string{"INVALID"},
+			total:         0,
+			expectedError: errors.New("error: item not found"),
 		},
 	}
 	for _, test := range tt {
