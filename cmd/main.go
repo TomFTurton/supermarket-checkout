@@ -1,5 +1,16 @@
 package main
 
+import (
+	"log"
+	"supermarket-checkout/internal"
+)
+
 func main() {
-	print("hello world")
+	model := internal.NewPricingModel()
+	supermarket := internal.NewSupermarket(model)
+
+	err := supermarket.Checkout()
+	if err != nil {
+		log.Fatal(err)
+	}
 }
