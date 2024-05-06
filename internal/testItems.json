@@ -1,6 +1,5 @@
 {
-    "items": [
-        {
+    "A":{
             "SKU":"A",
             "unitPrice": 50,
             "specialPrice": {
@@ -8,7 +7,7 @@
                 "amount": 3
             }
         },
-        {
+    "B":{
             "SKU":"B",
             "unitPrice": 5,
             "specialPrice": {
@@ -16,5 +15,4 @@
                 "amount": 0
             }
         }
-    ]
 }

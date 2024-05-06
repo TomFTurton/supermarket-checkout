@@ -15,13 +15,13 @@ func TestNewPaymentModel(t *testing.T) {
 
 	assert.NoError(t, err)
 	assert.NotEmpty(t, model)
-	assert.Equal(t, model.Items[0].SKU, "A")
-	assert.Equal(t, model.Items[0].UnitPrice, 50)
-	assert.Equal(t, model.Items[0].SpecialPrice.Price, 130)
-	assert.Equal(t, model.Items[0].SpecialPrice.Amount, 3)
+	assert.Equal(t, model["A"].SKU, "A")
+	assert.Equal(t, model["A"].UnitPrice, 50)
+	assert.Equal(t, model["A"].SpecialPrice.Price, 130)
+	assert.Equal(t, model["A"].SpecialPrice.Amount, 3)
 
-	assert.Equal(t, model.Items[1].SKU, "B")
-	assert.Equal(t, model.Items[1].UnitPrice, 5)
-	assert.Equal(t, model.Items[1].SpecialPrice.Price, 0)
-	assert.Equal(t, model.Items[1].SpecialPrice.Amount, 0)
+	assert.Equal(t, model["B"].SKU, "B")
+	assert.Equal(t, model["B"].UnitPrice, 5)
+	assert.Equal(t, model["B"].SpecialPrice.Price, 0)
+	assert.Equal(t, model["B"].SpecialPrice.Amount, 0)
 }

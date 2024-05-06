@@ -6,22 +6,20 @@ import (
 	"fmt"
 )
 
-type PricingModel struct {
-	Items []struct {
-		SKU          string `json:"SKU"`
-		UnitPrice    int    `json:"unitPrice"`
-		SpecialPrice struct {
-			Amount int `json:"amount"`
-			Price  int `json:"price"`
-		} `json:"specialPrice"`
-	} `json:"items"`
+type ItemModel struct {
+	SKU          string `json:"SKU"`
+	UnitPrice    int    `json:"unitPrice"`
+	SpecialPrice struct {
+		Amount int `json:"amount"`
+		Price  int `json:"price"`
+	} `json:"specialPrice"`
 }
 
-func NewPricingModel(file []byte) (*PricingModel, error) {
-	var model PricingModel
-	err := json.Unmarshal(file, &model)
+func NewPricingModel(file []byte) (map[string]ItemModel, error) {
+	pricingModel := make(map[string]ItemModel)
+	err := json.Unmarshal(file, &pricingModel)
 	if err != nil {
 		return nil, fmt.Errorf("error unmarshalling json: %w", err)
 	}
-	return &model, nil
+	return pricingModel, nil
 }
