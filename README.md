@@ -18,3 +18,8 @@ D | 15 |
 
 The checkout accepts items in any order, so that if we scan a B, an A, and another B, we’ll recognize the two Bs and price them at 45 (for a total price so far of 95). The implementation should consider if the pricing model may change frequently.
 ```
+
+
+### How to Run:
+Use the following command in a terminal from the root of this directory
+`go run ./cmd/main.go testFile.txt`
