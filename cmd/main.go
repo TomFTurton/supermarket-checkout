@@ -2,6 +2,7 @@ package main
 
 import (
 	_ "embed"
+	"fmt"
 	"log"
 	"supermarket-checkout/internal"
 )
@@ -16,8 +17,9 @@ func main() {
 	}
 	supermarket := internal.NewSupermarket(model)
 
-	err = supermarket.Checkout()
+	total, err := supermarket.Checkout([]string{})
 	if err != nil {
 		log.Fatal(err)
 	}
+	fmt.Printf("the total of your shop is: %v", total)
 }
