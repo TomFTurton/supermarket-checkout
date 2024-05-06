@@ -6,9 +6,6 @@ import (
 	"fmt"
 )
 
-//go:embed Items.json
-var file []byte
-
 type PricingModel struct {
 	Items []struct {
 		SKU          string `json:"SKU"`
@@ -20,7 +17,7 @@ type PricingModel struct {
 	} `json:"items"`
 }
 
-func NewPricingModel() (*PricingModel, error) {
+func NewPricingModel(file []byte) (*PricingModel, error) {
 	var model PricingModel
 	err := json.Unmarshal(file, &model)
 	if err != nil {
