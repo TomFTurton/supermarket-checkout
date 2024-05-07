@@ -10,6 +10,9 @@ import (
 //go:embed testItems.json
 var file []byte
 
+//go:embed invalidItems.json
+var invalidFile []byte
+
 func TestNewPaymentModel(t *testing.T) {
 	model, err := NewPricingModel(file)
 
@@ -24,4 +27,10 @@ func TestNewPaymentModel(t *testing.T) {
 	assert.Equal(t, model["B"].UnitPrice, 5)
 	assert.Equal(t, model["B"].SpecialPrice.Price, 0)
 	assert.Equal(t, model["B"].SpecialPrice.Amount, 0)
+}
+
+func TestInvalidModelFile(t *testing.T) {
+	_, err := NewPricingModel(invalidFile)
+
+	assert.Error(t, err)
 }

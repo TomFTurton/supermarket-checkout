@@ -1,0 +1,10 @@
+{
+    "A":{
+            "SKU":5,
+            "unitPrice": "50",
+            "specialPrice": {
+                "price": "130",
+                "amount": "3"
+            }
+        }
+}
